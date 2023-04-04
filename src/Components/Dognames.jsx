@@ -19,11 +19,13 @@ const Dognames = () => {
 
     const DogCards = (props) => {
         return (
-            <div id="cardContainerName" onClick={() => selectDog(props.name, props.sex, props.breed, props.present, props.age,
-            props.chipNumber, props.ownerFirstName, props.ownerLastName, props.phonenumber)} key={Math.random()}>
-                <div className="rowName"/>
-                <div className="valueName" id="value1">{props.name}</div>
-            </div>  
+            <div id="mainContainer" onClick={() => selectDog(props.name, props.sex, props.breed, props.present, props.age,
+                props.chipNumber, props.ownerFirstName, props.ownerLastName, props.phonenumber)} key={Math.random()}>
+            <div id="container">
+              <div><img src={props.img}/></div>
+              <div><h3>{props.name}</h3></div>
+            </div>
+          </div>
         )
     }
     const DogSingleCard = (props) => {
@@ -102,7 +104,7 @@ const Dognames = () => {
             return (
                 <DogCards name={dogs.name} sex={dogs.sex} breed={dogs.breed} 
                 present={dogs.present.toString()} age={dogs.age} chipNumber={dogs.chipNumber} ownerFirstName={dogs.owner.name} 
-                ownerLastName={dogs.owner.lastName} phonenumber={dogs.owner.phoneNumber} key={Math.random()}/>
+                ownerLastName={dogs.owner.lastName} phonenumber={dogs.owner.phoneNumber} img={dogs.img} key={Math.random()}/>
             );
         })); 
     }
