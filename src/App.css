@@ -92,3 +92,9 @@ img {
   height: 150px;
   width: 180px;
 }
+#value4 {
+  color: red;
+}
+#value4-present {
+  color: green;
+}

@@ -31,6 +31,12 @@ const Dognames = () => {
         )
     }
     const DogSingleCard = (props) => {
+        //Change font color of "present" if present == 'true'
+        let testvar = 'value4';
+        if (props.present == 'true') {
+            testvar = 'value4-present';
+        }
+
         return (
             <div id="cardContainer" key={Math.random()}>
             <div className="row">
@@ -47,27 +53,27 @@ const Dognames = () => {
             </div>
             <div className="row">
                 <div className="label">Present?</div>
-                <div className="value" id="value4">{props.present}</div>
+                <div className="value" id={testvar}>{props.present}</div>
             </div>
             <div className="row">
                 <div className="label">Age</div>
-                <div className="value" id="value6">{props.age}</div>
+                <div className="value" id="value5">{props.age}</div>
             </div>
             <div className="row">
                 <div className="label">Chip number</div>
-                <div className="value" id="value7">{props.chipNumber}</div>
+                <div className="value" id="value6">{props.chipNumber}</div>
             </div>
             <div className="row">
                 <div className="label">Owner first name</div>
-                <div className="value" id="value4">{props.ownerFirstName}</div>
+                <div className="value" id="value7">{props.ownerFirstName}</div>
             </div>
             <div className="row">
                 <div className="label">Owner last name</div>
-                <div className="value" id="value6">{props.ownerLastName}</div>
+                <div className="value" id="value8">{props.ownerLastName}</div>
             </div>
             <div className="row">
                 <div className="label">Phone number</div>
-                <div className="value" id="value7">{props.phonenumber}</div>
+                <div className="value" id="value9">{props.phonenumber}</div>
             </div>
         </div>
         )
