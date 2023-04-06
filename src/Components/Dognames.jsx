@@ -31,7 +31,7 @@ const Dognames = () => {
         )
     }
     const DogSingleCard = (props) => {
-        //Change font color of "present" if present == 'true'
+        //Changes font color of "present" if present == 'true'
         let textColor = 'value4';
         if (props.present == 'true') {
             textColor = 'value4-present';
@@ -63,11 +63,11 @@ const Dognames = () => {
                 <div className="value" id="value6">{props.chipNumber}</div>
             </div>
             <div className="row">
-                <div className="label">Owner first name</div>
+                <div className="label">Owner firstname</div>
                 <div className="value" id="value7">{props.ownerFirstName}</div>
             </div>
             <div className="row">
-                <div className="label">Owner last name</div>
+                <div className="label">Owner lastname</div>
                 <div className="value" id="value8">{props.ownerLastName}</div>
             </div>
             <div className="row">
