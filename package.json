@@ -1,20 +1,26 @@
 {
   "name": "doggydaycaretwo",
   "private": true,
+  "homepage": "https://emilakerman.github.io/doggydaycaretwo",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "gh-pages": "^5.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
-    "sort-by": "^1.2.0"
+    "redaxios": "^0.5.1",
+    "sort-by": "^1.2.0",
+    "wretch": "^2.5.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

@@ -1,6 +1,6 @@
 import '../App.css'
 import { useState, useEffect } from 'react'
-
+import axios from 'redaxios';
 
 const Dognames = () => {
     const apiURL = `https://api.jsonbin.io/v3/b/64254c47ebd26539d0a05052`;
@@ -19,8 +19,10 @@ const Dognames = () => {
 
     const DogCards = (props) => {
         return (
-            <div id="mainContainer" onClick={() => selectDog(props.name, props.sex, props.breed, props.present, props.age,
+            <div id="mainContainer" onClick={() => 
+                selectDog(props.name, props.sex, props.breed, props.present, props.age,
                 props.chipNumber, props.ownerFirstName, props.ownerLastName, props.phonenumber)} key={Math.random()}>
+
             <div id="container">
               <div><img src={props.img}/></div>
               <div><h3>{props.name}</h3></div>
@@ -92,21 +94,37 @@ const Dognames = () => {
         fetchData();
     }, [])
 
-    const fetchData = async () => {
-        const response = await fetch(apiURL);
-        const data = await response.json();
+    const fetchData = () => {
         let updatedDogNameList = [];
+
+        axios.get(apiURL)
+        .then((response) => {
+            for (const dogs in response.data.record) {
+                updatedDogNameList.push(response.data.record[dogs]);
+            }
+            setdogNameList(updatedDogNameList.map((dogs) => {
+                return (
+                    <DogCards name={dogs.name} sex={dogs.sex} breed={dogs.breed} 
+                    present={dogs.present.toString()} age={dogs.age} chipNumber={dogs.chipNumber} ownerFirstName={dogs.owner.name} 
+                    ownerLastName={dogs.owner.lastName} phonenumber={dogs.owner.phoneNumber} img={dogs.img} key={Math.random()}/>
+                );
+            })); 
+        })
+        .catch((error) => {
+            if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+            } else if (error.request) {
+            console.log(error.request);
+            } else {
+            console.log('Error', error.message);
+            }
         
-        for (const dogs in data.record) {
-            updatedDogNameList.push(data.record[dogs]); //tar in alla egenskaper istället bara för namnen
-        }
-        setdogNameList(updatedDogNameList.map((dogs) => {
-            return (
-                <DogCards name={dogs.name} sex={dogs.sex} breed={dogs.breed} 
-                present={dogs.present.toString()} age={dogs.age} chipNumber={dogs.chipNumber} ownerFirstName={dogs.owner.name} 
-                ownerLastName={dogs.owner.lastName} phonenumber={dogs.owner.phoneNumber} img={dogs.img} key={Math.random()}/>
-            );
-        })); 
+        })
+        .finally(function () {
+            // always executed, not used right now
+        }); 
     }
     return (
         <>
