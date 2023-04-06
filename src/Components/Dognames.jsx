@@ -32,11 +32,10 @@ const Dognames = () => {
     }
     const DogSingleCard = (props) => {
         //Change font color of "present" if present == 'true'
-        let testvar = 'value4';
+        let textColor = 'value4';
         if (props.present == 'true') {
-            testvar = 'value4-present';
+            textColor = 'value4-present';
         }
-
         return (
             <div id="cardContainer" key={Math.random()}>
             <div className="row">
@@ -53,7 +52,7 @@ const Dognames = () => {
             </div>
             <div className="row">
                 <div className="label">Present?</div>
-                <div className="value" id={testvar}>{props.present}</div>
+                <div className="value" id={textColor}>{props.present}</div>
             </div>
             <div className="row">
                 <div className="label">Age</div>
