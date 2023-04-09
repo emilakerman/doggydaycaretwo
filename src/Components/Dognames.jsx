@@ -17,6 +17,9 @@ const Dognames = () => {
     let [selectedlast, setselectedDogownerlast] = useState([]);
     let [selectednumber, setselectedDogphonenumber] = useState([]);
 
+    //local storage list
+    const [storageItems, setStorageItems] = useState([]);
+
     const DogCards = (props) => {
         return (
             <div id="mainContainer" onClick={() => 
@@ -97,17 +100,17 @@ const Dognames = () => {
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [storageItems])
 
     const fetchData = () => {
-        let updatedDogNameList = [];
+        // let updatedDogNameList = [];
 
         axios.get(apiURL)
         .then((response) => {
-            for (const dogs in response.data.record) {
-                updatedDogNameList.push(response.data.record[dogs]);
-            }
-            setdogNameList(updatedDogNameList.map((dogs) => {
+            localStorage.setItem('dogs', JSON.stringify(response.data.record));
+            setStorageItems(JSON.parse(localStorage.getItem('dogs')));    
+
+            setdogNameList(storageItems.map((dogs) => {
                 return (
                     <DogCards name={dogs.name} sex={dogs.sex} breed={dogs.breed} 
                     present={dogs.present.toString()} age={dogs.age} chipNumber={dogs.chipNumber} ownerFirstName={dogs.owner.name} 
