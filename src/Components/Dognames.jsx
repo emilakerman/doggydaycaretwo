@@ -40,6 +40,7 @@ const Dognames = () => {
             textColor = 'value4-present';
         }
         return (
+            <div className="topContainer">
             <div id="cardContainer" key={Math.random()}>
             <div className="row">
                 <div className="label">Name</div>
@@ -77,6 +78,7 @@ const Dognames = () => {
                 <div className="label">Phone number</div>
                 <div className="value" id="value9">{props.phonenumber}</div>
             </div>
+        </div>
         </div>
         )
     }
