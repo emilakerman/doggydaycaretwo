@@ -103,8 +103,6 @@ const Dognames = () => {
     }, [storageItems])
 
     const fetchData = () => {
-        // let updatedDogNameList = [];
-
         axios.get(apiURL)
         .then((response) => {
             localStorage.setItem('dogs', JSON.stringify(response.data.record));
