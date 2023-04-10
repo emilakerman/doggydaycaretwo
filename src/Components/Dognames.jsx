@@ -137,6 +137,7 @@ const Dognames = () => {
     }
     return (
         <>
+        <h2 id="wowTitle">Wow, look at these dogs!</h2>
             <ul>
                 {content}
             </ul>
