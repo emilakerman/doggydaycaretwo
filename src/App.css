@@ -4,6 +4,7 @@ body {
 
 /* CSS for card container */
 #cardContainer {
+  margin-left: -30px;
   width: 100%;
   max-width: 600px;
   padding: 20px;
@@ -112,6 +113,7 @@ button {
   height: 30rem;
 }
 #container {
+  margin-top: -30px;
   margin-left: -30px;
   text-align: center;
   background-color: #ffffff;
@@ -135,8 +137,4 @@ button {
 }
 #container:hover {
   background-color: #a9a6a6;
-}
-#wowTitle {
-  text-align: center;
-  margin-bottom: -50px;
 }
