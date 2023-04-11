@@ -4,7 +4,7 @@ import axios from 'redaxios';
 import LoadingScreen from './LoadingScreen';
 
 const Dognames = () => {
-    const apiURL = `https://api.jsonbin.io/v3/b/6422b9c8c0e7653a0597d126`;
+    const apiURL = `https://api.jsonbin.io/v3/b/643568d3ebd26539d0a8e3b1`;
     let [dogNameList, setdogNameList] = useState([]);
 
     let content = null;
@@ -21,14 +21,22 @@ const Dognames = () => {
     //local storage list
     const [storageItems, setStorageItems] = useState([]);
 
+   
+
     const DogCards = (props) => {
+        const defaultImage = "https://picsum.photos/200";
+
+        const onImageError = (e) => {
+            e.target.src = defaultImage
+          }
+
         return (
         <div id="mainContainer" onClick={() => 
                 selectDog(props.name, props.sex, props.breed, props.present, props.age,
                 props.chipNumber, props.ownerFirstName, props.ownerLastName, props.phonenumber)} key={Math.random()}>
 
             <div id="container" className='container'>
-            <div><img src={props.img}/></div>
+            <div><img src={props.img ? props.img : defaultImage} onError={onImageError} alt={props.name}/></div>
             <div><h3>{props.name}</h3></div>
             </div>
         </div>
@@ -117,7 +125,7 @@ const Dognames = () => {
         axios.get(apiURL)
         .then((response) => {
 
-            localStorage.setItem('dogs', JSON.stringify(response.data.record));
+            localStorage.setItem('dogs', JSON.stringify(response.data.record.record));
             setStorageItems(JSON.parse(localStorage.getItem('dogs')));    
 
             setdogNameList(storageItems.map((dogs) => {
