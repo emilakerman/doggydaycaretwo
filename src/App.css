@@ -136,5 +136,10 @@ button {
   width: 300px; /* set the width to the desired width */
 }
 #container:hover {
-  background-color: #a9a6a6;
+  background-color: #a66a6a;
+}
+#loadingScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

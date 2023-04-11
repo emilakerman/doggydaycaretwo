@@ -4,7 +4,7 @@ import axios from 'redaxios';
 import LoadingScreen from './LoadingScreen';
 
 const Dognames = () => {
-    const apiURL = `https://api.jsonbin.io/v3/b/64254c47ebd26539d0a05052`;
+    const apiURL = `https://api.jsonbin.io/v3/b/6422b9c8c0e7653a0597d126`;
     let [dogNameList, setdogNameList] = useState([]);
 
     let content = null;
@@ -23,15 +23,15 @@ const Dognames = () => {
 
     const DogCards = (props) => {
         return (
-            <div id="mainContainer" onClick={() => 
+        <div id="mainContainer" onClick={() => 
                 selectDog(props.name, props.sex, props.breed, props.present, props.age,
                 props.chipNumber, props.ownerFirstName, props.ownerLastName, props.phonenumber)} key={Math.random()}>
 
             <div id="container" className='container'>
-              <div><img src={props.img}/></div>
-              <div><h3>{props.name}</h3></div>
+            <div><img src={props.img}/></div>
+            <div><h3>{props.name}</h3></div>
             </div>
-          </div>
+        </div>
         )
     }
     const DogSingleCard = (props) => {
@@ -83,9 +83,17 @@ const Dognames = () => {
         </div>
         )
     }
-    if (selectedDogName == "") {
+
+
+    const [loading, setLoading] = useState(true);
+    setTimeout(() => {
+        setLoading(false);
+    }, 2000);
+    if (selectedDogName == "" && loading == true) {
+        content = <LoadingScreen />;
+    } if (selectedDogName == "" && loading == false) {
         content = dogNameList;
-    } else {
+    } else if (selectedDogName != "") {
         content = <DogSingleCard name={selectedDogName} sex={selectedSex} breed={selectedBreed} present={selectedpresent}
         age={selectedage} chipNumber={selectedchip} ownerFirstName={selectedfirst} ownerLastName={selectedlast} phonenumber={selectednumber}/>;
     }
@@ -108,6 +116,7 @@ const Dognames = () => {
     const fetchData = () => {
         axios.get(apiURL)
         .then((response) => {
+
             localStorage.setItem('dogs', JSON.stringify(response.data.record));
             setStorageItems(JSON.parse(localStorage.getItem('dogs')));    
 
