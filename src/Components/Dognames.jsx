@@ -84,7 +84,7 @@ const Dognames = () => {
         )
     }
 
-
+    //loading component for a few seconds while awaiting API fetch
     const [loading, setLoading] = useState(true);
     setTimeout(() => {
         setLoading(false);
