@@ -11,7 +11,7 @@ const Welcome = (props) => {
         <div id="welcomeCard">
             <h2>Welcome to Doggy Daycare</h2>
             <Link to="/dogs">
-                <button>{buttonTitle1}</button>
+            <button className="button-85" role="button">{buttonTitle1}</button>
             </Link>
         </div>
     )
